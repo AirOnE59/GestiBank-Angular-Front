@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Liste des demandes de création de comptes</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Numéro</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let demande of demandes">
+      <th scope="row">{{demande.id}}</th>
+      <td>{{demande.numero}}</td>
+      <td>{{demande.nom}}</td>
+      <td>{{demande.prenom}}</td>
+      <td>
+        <select>
+          <option *ngFor="let agent of agents">{{agent.nom}}</option>
+        </select>
+        <button type="button" class="btn btn-success" (click)="AffecterUneDemandeToAgent(client)"><i class="fa fa-save" title="Supprimer"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
