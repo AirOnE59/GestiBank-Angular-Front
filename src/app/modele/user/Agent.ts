@@ -1,13 +1,13 @@
 import {Utilisateur} from './Utilisateur';
 
 export class Agent extends Utilisateur {
-  matricule: string;
   debutEmbauche: Date;
+  matricule: string;
 
-  constructor(id: number, identifiant: string, motDePasse: string, email: string,
-              nom: string, prenom: string, telephone: string, matricule: string, debutEmbauche: Date) {
-    super(id, identifiant, motDePasse, email, nom, prenom, telephone);
-    this.matricule = matricule;
+  constructor(id: number, motDePasse: string, email: string,
+              nom: string, prenom: string, telephone: string, debutEmbauche: Date, matricule: string) {
+    super(id, motDePasse, email, nom, prenom, telephone);
     this.debutEmbauche = debutEmbauche;
+    this.matricule = matricule;
   }
 }

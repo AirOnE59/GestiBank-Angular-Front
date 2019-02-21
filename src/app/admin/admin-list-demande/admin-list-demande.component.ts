@@ -56,5 +56,8 @@ export class AdminListDemandeComponent implements OnInit {
     );
   }
 
+  redirectEditAgent(agent: Agent) {
+    this.router.navigate(['admin/details-agent', agent.id]);
+  }
 
 }

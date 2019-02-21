@@ -6,6 +6,7 @@ import {AdminListDemandeComponent} from "./admin/admin-list-demande/admin-list-d
 import {Agent} from "./modele/user/Agent";
 import {AdminDemandeCreationCompte} from "./modele/user/AdminDemandeCreationCompte";
 import {AffectationDemandeToAgent} from "./modele/user/AffectationDemandeToAgent";
+import {Client} from "./modele/user/Client";
 
 
 
@@ -40,14 +41,29 @@ export class AdminService {
       .pipe(catchError(err => throwError('ERREUR SELECT AGENTS' + err)));
   }
 
-  findAgentNom(nom: string): Observable<any> {
-    return this.http.get<Agent>(this.apiUrl + '/admin/rechercher-agent-par-nom/' + nom)
-      .pipe(catchError(err => throwError('ERREUR GET BY NAME' + err)));
+  findAgentByMatricule(matricule: string): Observable<any> {
+    return this.http.get<Agent>(this.apiUrl + '/admin/rechercher-agent-par-matricule/' + matricule)
+      .pipe(catchError(err => throwError('ERREUR GET BY MATRICULE' + err)));
   }
 
   AffectDemandeToAgent(idDemande: string, idAgent: number): Observable<any> {
     return this.http.get<AffectationDemandeToAgent>(this.apiUrl + 'admin/affectation-demande-creation-compte/' + idDemande + '/' + idAgent)
       .pipe(catchError(err => throwError('ERREUR AFFECT DEMANDE TO AGENT' + err)));
+  }
+
+  saveAgent(agent: Agent): Observable<any> {
+    return this.http.post<Agent>(this.apiUrl + 'admin/creer-agent', agent)
+      .pipe(catchError(err => throwError('ERREUR CREATE AGENT' + err)));
+  }
+
+  updateAgent(agent: Agent): Observable<any> {
+    return this.http.put<Agent>(this.apiUrl + 'admin/agent/' + agent.id, agent)
+      .pipe(catchError(err => throwError('ERREUR UPDATE AGENT' + err)));
+  }
+
+  deleteAgentById(id: number): Observable<any> {
+    return this.http.delete<Agent>(this.apiUrl + 'admin/agent/' + id)
+      .pipe(catchError(err => throwError('ERREUR DELETE AGENT' + err)));
   }
 
 }

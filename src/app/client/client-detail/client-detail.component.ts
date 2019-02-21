@@ -39,7 +39,6 @@ export class ClientDetailComponent implements OnInit {
          this.id = client.id;
          this.userForm.patchValue({
            email: client.email,
-           identifiant: client.identifiant,
            motDePasse: client.motDePasse,
            nom: client.nom,
            prenom: client.prenom,
@@ -66,7 +65,6 @@ export class ClientDetailComponent implements OnInit {
         console.log('>>>>>>>>> UPDATE CLIENT');
         const client: Client = new Client(this.id,
           this.userForm.controls.email.value,
-          this.userForm.controls.identifiant.value,
           this.userForm.controls.motDePasse.value,
           this.userForm.controls.nom.value,
           this.userForm.controls.prenom.value,
@@ -83,7 +81,6 @@ export class ClientDetailComponent implements OnInit {
         console.log('>>>>>>>>> ADD CLIENT');
         const client: Client = new Client(null,
           this.userForm.controls.email.value,
-          this.userForm.controls.identifiant.value,
           this.userForm.controls.motDePasse.value,
           this.userForm.controls.nom.value,
           this.userForm.controls.prenom.value,

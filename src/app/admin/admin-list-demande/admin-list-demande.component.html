@@ -20,9 +20,35 @@
         <select>
           <option *ngFor="let agent of agents">{{agent.nom}}</option>
         </select>
-        <button type="button" class="btn btn-success" (click)="AffecterUneDemandeToAgent(client)"><i class="fa fa-save" title="Supprimer"></i></button>
+        <button type="button" class="btn btn-success" (click)="AffecterUneDemandeToAgent(demande.id, agent.id)"><i class="fa fa-save" title="Supprimer"></i></button>
       </td>
     </tr>
     </tbody>
   </table>
+<div class="row">
+  <h2>Liste des agents</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Numéro</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let agent of agents">
+      <th scope="row">{{agent.id}}</th>
+      <td>{{agent.numero}}</td>
+      <td>{{agent.nom}}</td>
+      <td>{{agent.prenom}}</td>
+      <td>
+        <!--<button type="button" class="btn btn-warning" (click)="redirectEditAgent()"><i class="fa fa-edit" title="Modifier"></i></button>-->
+        <button type="button" class="btn btn-danger" (click)="deleteAgentById(agent)"><i class="fa fa-remove" title="Supprimer"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </div>
